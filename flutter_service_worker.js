@@ -6,7 +6,7 @@ const RESOURCES = {
   "version.json": "ac15570ccbf32bfbbbca9e90590ba53b",
 "index.html": "3cb018174c338ffd35a6205575b8acc8",
 "/": "3cb018174c338ffd35a6205575b8acc8",
-"main.dart.js": "e824350c54657c1842ee1f920c1b771c",
+"main.dart.js": "d7eb331a32ce20a652924fa81a63185f",
 "loader.gif": "dd3165f7dfc8a37b86f8a29b2227bb9a",
 "favicon.png": "d19a9fab52bb0ae134e2b15b0866bc01",
 "icons/icon-192.png": "efb7e7fca9a3b3142ed4e62418626c25",
@@ -447,7 +447,7 @@ const RESOURCES = {
 "assets/assets/assets/privacy_policy.txt": "d72622637e610144a8c16adb683addb1",
 "assets/assets/privacy_policy.txt": "d72622637e610144a8c16adb683addb1",
 ".idea/vcs.xml": "8c9c0403ab0f6457841c605f08a3340c",
-".idea/workspace.xml": "ebeab946e6bd86ee776e4502229c0a6d",
+".idea/workspace.xml": "5ae22156d0a3d1f1e501c1a8e21957b1",
 ".idea/modules.xml": "b39c4e5fecefdd60cfda2a0993602780",
 ".idea/carechart_web.iml": "52db5efd0fe9f576a1302b8c4b5eac6c",
 ".idea/misc.xml": "64e48ed5fe1c0771136b54971310826a"

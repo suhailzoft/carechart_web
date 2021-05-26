@@ -54278,7 +54278,7 @@ case 3:l="Bearer "+l.c(d)
 k=H
 s=4
 return P.l(U.mx(),$async$tF)
-case 4:q=p.j([o,n,m,l,"identity","Identity "+k.c(d)],q,q)
+case 4:q=p.j([o,n,m,l,"identity","Identity "+k.c(d),"Accept-Encoding","*/*"],q,q)
 G.b62(a,null,q).a_(0,new Z.acX(),t.L).bt(new Z.acY())
 return P.v(null,r)}})
 return P.w($async$tF,r)},
@@ -54470,7 +54470,7 @@ while(true)switch(s){case 0:s=3
 return P.l(p.a.tE(J.f0($.vs(),"/encounter"),new O.PT("oncology","video","self")),$async$zm)
 case 3:n=b
 if(n.b===200){o=J.ai(J.ai(J.ai(C.aB.ce(0,B.kk(U.ke(n.e).c.a.i(0,"charset")).ce(0,n.x)),"data"),"encounter"),"encounterId")
-q=p.a.tF(J.f0($.vs(),"/encounter/"+H.c(o)+"/symptom-assessment/"),null).a_(0,new U.ayD(),t.oe).bt(new U.ayE())
+q=p.a.tF(J.f0($.vs(),"/encounter/"+H.c(o)+"/symptom-assessment"),null).a_(0,new U.ayD(),t.oe).bt(new U.ayE())
 s=1
 break}case 1:return P.v(q,r)}})
 return P.w($async$zm,r)}}
