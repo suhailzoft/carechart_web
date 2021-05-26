@@ -1,0 +1,69 @@
+{
+  "General Information & Support": [
+    {
+      "label": "Dying With Dignity",
+      "url": "https://www.dyingwithdignity.ca"
+    },
+    {
+      "label": "End of Life Options",
+      "url": "https://www.dyingwithdignity.ca/other_end_of_life_options"
+    },
+    {
+      "label": "Kenora Chiefs Advisory Support Services",
+      "url": "http://www.kenorachiefs.ca"
+    },
+    {
+      "label": "Lake of Woods Palliative Care",
+      "subLabel": "1.807.468.9861 ext. 2339"
+    },
+    {
+      "label": "Community Mental Health",
+      "subLabel": "1.807.468.9861 ext. 3355 or 4220"
+    }
+  ],
+  "Symptom Management": [
+    {
+      "label": "Virtual Hospice Services Kenora / Rainy River",
+      "url": "https://www.virtualhospice.ca"
+    }
+  ],
+  "Alternate Service Providers": [
+    {
+      "label": "Wesway respite services",
+      "url": "http://www.wesway.com"
+    },
+    {
+      "label": "Trillium Gift of Life",
+      "url": "https://www.giftoflife.on.ca"
+    },
+    {
+      "label": "Kenora Chiefs Advisory Support Services",
+      "url": "http://www.kenorachiefs.ca"
+    }
+  ],
+  "Traditional Medicine and Spiritual Care": [
+    {
+      "label": "Kenora chief Advisory",
+      "url": "http://www.kenorachiefs.ca"
+    },
+    {
+      "label": "Lake of Woods Hospital Chaplain",
+      "subLabel": "1.807.468.9861 ext. 2229"
+    }
+  ],
+  "Advanced Care Planning": [
+    {
+      "label": "Rights as a Patient",
+      "url": "https://www.dyingwithdignity.ca/your_rights_as_a_patient"
+    },
+    {
+      "label": "ensure your wishes are followed",
+      "url": "https://www.dyingwithdignity.ca/ensure_your_wishes_are_followed"
+    },
+    {
+      "label": "Advanced Care Planning Kits",
+      "url": "https://www.dyingwithdignity.ca/download_your_advance_care_planning_kit"
+    }
+  ]
+
+}
