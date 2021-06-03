@@ -1,0 +1,130 @@
+{
+  "provinces": [
+    {
+      "value": "al",
+      "title": "Alberta"
+    },
+    {
+      "value": "bc",
+      "title": "British Columbia"
+    },
+    {
+      "value": "mn",
+      "title": "Manitoba"
+    },
+    {
+      "value": "nb",
+      "title": "New Brunswick"
+    },
+    {
+      "value": "nl",
+      "title": "Newfoundland and Labrado"
+    },
+    {
+      "value": "nt",
+      "title": "Northwest Territories"
+    },
+    {
+      "value": "ns",
+      "title": "Nova Scotia"
+    },
+    {
+      "value": "nu",
+      "title": "Nunavut"
+    },
+    {
+      "value": "on",
+      "title": "Ontario"
+    },
+    {
+      "value": "pei",
+      "title": "Prince Edward Island"
+    },
+    {
+      "value": "qu",
+      "title": "Quebec"
+    },
+    {
+      "value": "sas",
+      "title": "Saskatchewan"
+    },
+    {
+      "value": "yu",
+      "title": "Yukon"
+    }
+  ],
+  "hospitals": [
+    "Bluewater Health",
+    "Brant Community Healthcare System",
+    "Cambridge Memorial Hospital",
+    "Grand River Regional Cancer Centre",
+    "Groves Memorial Community Hospital",
+    "Guelph General Hospital",
+    "Halton Healthcare - Oakville Trafalgar Memorial Hospital",
+    "Headwaters Health Care Center",
+    "Health Sciences North: Health Sciences North/Horizon Santé Nord",
+    "Health Sciences North: Hospital De Nipissing Ouest/The West Nipissing General Hospital",
+    "Health Sciences North: Hôpital Notre-Dame Hospital (Hearst)",
+    "Health Sciences North: Kirkland & District",
+    "Health Sciences North: Manitoulin Health Centre",
+    "Health Sciences North: North Bay Regional Health Centre",
+    "Health Sciences North: Sensenbrenner Hospital",
+    "Health Sciences North: St. Joseph's General Hospital Elliot Lake",
+    "Health Sciences North: Temiskaming Hospital",
+    "Health Sciences North: The Lady Minto Hospital",
+    "Health Sciences North: Timmins & District Hospital",
+    "Health Sciences North: West Perry Sound Health Centre",
+    "Humber River Regional Hospital",
+    "Joseph Brant Hospital",
+    "Juravinski (HHS): Gyne Oncology",
+    "Juravinski (HHS): Hematology",
+    "Juravinski (HHS): Medical Oncology/Radiation Oncology",
+    "Kingston Health Sciences Centre",
+    "Lakeridge Healthcare/Durham Regional Cancer Centre",
+    "London Health Sciences Centre - Victoria Hospital / University Hospital",
+    "Mackenzie Health",
+    "Markham Stouffville Hospital",
+    "Michael Garron Hospital",
+    "Mount Sinai Hospital",
+    "Niagara Health: Walker Family Cancer Centre",
+    "Northumberland Hills Hospital",
+    "North Wellington Health Care - Louise Marshall Hospital",
+    "North York General Hospital",
+    "Ottawa Hospital (Gynecology Oncology)",
+    "Ottawa Hospital (Hematology)",
+    "Ottawa Hospital (Medical Oncology / Radiation)",
+    "Peterborough Cancer Centre",
+    "Princess Margaret Hospital (Breast/Plastics)",
+    "Princess Margaret Hospital (CNS)",
+    "Princess Margaret Hospital (Eye Clinic)",
+    "Princess Margaret Hospital (GI)",
+    "Princess Margaret Hospital (GU)",
+    "Princess Margaret Hospital (Gynecology - Medical)",
+    "Princess Margaret Hospital (Gynecology - Radiation)",
+    "Princess Margaret Hospital (Gynecology - Surgical)",
+    "Princess Margaret Hospital (Head & Neck/Endocrine)",
+    "Princess Margaret Hospital (Leukemia)",
+    "Princess Margaret Hospital (Lymphoma and Myeloma)",
+    "Princess Margaret Hospital (Palliative)",
+    "Princess Margaret Hospital (Skin/Melanoma)",
+    "Princess Margaret Hospital (Thoracic (Lung) & Sarcoma)",
+    "Quinte Health Care Belleville General",
+    "Royal Victoria Hospital",
+    "Sault Area Hospital - Algoma District Cancer Program: Chemotherapy",
+    "Sault Area Hospital - Algoma District Cancer Program: Radiation",
+    "Scarborough Health Network (Birchmount site)",
+    "Scarborough Health Network (Centenary site)",
+    "Scarborough Health Network (General site)",
+    "Southlake (Stronach Regional Cancer Centre)",
+    "St. Joseph's Health Center (Unity Health Toronto)",
+    "St. Michael’s Hospital (Unity Health Toronto)",
+    "Sunnybrook (Odette Cancer Centre)",
+    "Thunder Bay Regional Health Sciences Centre (Hematologist)",
+    "Thunder Bay Regional Health Sciences Centre (Med Onc)",
+    "Thunder Bay Regional Health Sciences Centre (Rad Onc)",
+    "Trillium Health Partners - Credit Valley Hospital",
+    "Trillium Health Partners - Queensway",
+    "William Osler Health Systems - Brampton Civic Hospital",
+    "Windsor Regional Hospital"
+  ]
+}
