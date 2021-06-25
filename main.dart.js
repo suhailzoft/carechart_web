@@ -60534,7 +60534,7 @@ v:function(a,b){var s=null,r=t.w,q=b.t(r).f,p=q.gak(q)===C.y
 q=p?s:M.j(s,s,C.b,s,s,s,s,s,s,s,s,s,s,s)
 return M.d8(E.dU(s,s,!0,s,s,p,0,s,q,s,new M.dP(s)),C.l,D.c4(s,Q.t0(E.c2(new T.D(new V.A(130,0,130,0),T.y(H.a([T.e(s,b.t(r).f.a.b/4.8,s),G.e1("assets/icons/feedback_welcome_icon.svg",s,194,188),T.e(s,82,s),L.u("Symptoms Follow up",s,s,s,s,s,s,s,A.a9(s,s,C.w,s,s,s,s,s,"Gotham",s,s,36,s,C.r,s,1.4,!0,s,s,s,s,s,s,s),C.q,s,s)],t.t),C.f,C.K,C.e),s),s,C.x,s,s,C.t)),C.x,!1,s,s,s,s,s,s,s,s,s,s,s,s,new Z.aKx(b),s,s,s,s,s,s),s,s,s,s,s,s)},
 W:function(){this.ag()
-P.fG(P.bz(0,0,0,0,0,2),null,t.z).fC(new Z.aKy(this))}}
+P.fG(P.bz(0,0,0,0,0,1),null,t.z).fC(new Z.aKy(this))}}
 Z.aKx.prototype={
 $0:function(){L.dE(this.a).df()},
 $S:1}
