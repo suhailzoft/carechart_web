@@ -1,15 +1,5 @@
 'use strict';
 
-(function qbInit(CONFIG) {
-  QB.init(
-    CONFIG.CREDENTIALS.appId,
-    CONFIG.CREDENTIALS.authKey,
-    CONFIG.CREDENTIALS.authSecret,
-    CONFIG.CREDENTIALS.accountKey,
-    CONFIG.APP_CONFIG
-  );
-})(JSON.parse(localStorage.getItem('QB_CONFIG')));
-
 /** GLOBAL */
 window.app = new Proxy(
   {},
@@ -109,16 +99,25 @@ app.helpers.setAppState = function (incomingState) {
 
   Array.from(document.getElementsByClassName(classes.video_maximize)).forEach(
     (el) =>
-      (el.style.display = callOngoing && window.innerWidth > 480 ? (maximized ? 'none' : 'block') : 'none')
+      (el.style.display =
+        callOngoing && window.innerWidth > 480
+          ? maximized
+            ? 'none'
+            : 'block'
+          : 'none')
   );
 
   Array.from(document.getElementsByClassName(classes.video_minimize)).forEach(
     (el) =>
-      (el.style.display = callOngoing && window.innerWidth > 480  ? (maximized ? 'block' : 'none') : 'none')
+      (el.style.display =
+        callOngoing && window.innerWidth > 480
+          ? maximized
+            ? 'block'
+            : 'none'
+          : 'none')
   );
 
-  document
-    .getElementById('drag_div').style.top = shrunk ? 'unset' : 0;
+  document.getElementById('drag_div').style.top = shrunk ? 'unset' : 0;
 
   document.getElementById('modal_body').style.display = shrunk
     ? 'none'
@@ -160,29 +159,57 @@ app.helpers.setAppState = function (incomingState) {
     (el) => (el.style.display = callOngoing ? 'block' : 'none')
   );
 
-  Array.from(document.getElementsByClassName(classes.waiting_call_info)).forEach(
-    (el) => (el.style.display = waitingCallInfo ? 'block' : 'none')
-  );
+  Array.from(
+    document.getElementsByClassName(classes.waiting_call_info)
+  ).forEach((el) => (el.style.display = waitingCallInfo ? 'block' : 'none'));
 
   Array.from(document.getElementsByClassName(classes.end_call)).forEach(
     (el) => (el.style.display = endCall ? 'block' : 'none')
   );
 
   document.getElementById('drag_div').style.visibility =
-    !callWaiting && !callIncoming && !callOngoing && !waitingCallInfo && !endCall ? 'hidden' : 'visible';
-  
+    !callWaiting &&
+    !callIncoming &&
+    !callOngoing &&
+    !waitingCallInfo &&
+    !endCall
+      ? 'hidden'
+      : 'visible';
+
   document.getElementsByTagName('flt-glass-pane')[0].style.opacity =
-    (!callWaiting && !callIncoming && !callOngoing && !waitingCallInfo && !endCall) || shrunk ? 'unset' : 0.5;
-  
-    document.getElementsByClassName('loading')[0].style.opacity =
-    (!callWaiting && !callIncoming && !callOngoing && !waitingCallInfo && !endCall) || shrunk ? 'unset' : 0;
+    (!callWaiting &&
+      !callIncoming &&
+      !callOngoing &&
+      !waitingCallInfo &&
+      !endCall) ||
+    shrunk
+      ? 'unset'
+      : 0.5;
+
+  document.getElementsByClassName('loading')[0].style.opacity =
+    (!callWaiting &&
+      !callIncoming &&
+      !callOngoing &&
+      !waitingCallInfo &&
+      !endCall) ||
+    shrunk
+      ? 'unset'
+      : 0;
 };
 
-app.helpers.startSession = async function (login, password) {
+app.helpers.startSession = async function (login, password, qbConfig) {
   const userRequiredParams = {
     login: login,
     password: password,
   };
+
+  await QB.init(
+    qbConfig.CREDENTIALS.appId,
+    qbConfig.CREDENTIALS.authKey,
+    qbConfig.CREDENTIALS.authSecret,
+    qbConfig.CREDENTIALS.accountKey,
+    qbConfig.APP_CONFIG
+  );
 
   return await new Promise(function (resolve, reject) {
     QB.createSession(function (csErr, csRes) {
@@ -203,14 +230,12 @@ app.helpers.startSession = async function (login, password) {
 };
 
 app.helpers.destroySession = async function (restart = false) {
-  app.helpers.setAppState(
-    {
-      ...app.initialAppState
-    }
-  );
+  app.helpers.setAppState({
+    ...app.initialAppState,
+  });
 
   await restartSession();
-}
+};
 
 app.helpers.connectToChat = async function (userId, password) {
   const userRequiredParams = {
@@ -234,18 +259,20 @@ app.helpers.activateClickListeners = function () {
   document
     .getElementById('waiting_call_close')
     .addEventListener('click', function () {
-      app.helpers.setAppState(window.innerWidth <= 480 ?
-        {
-          ...app.initialAppState,
-          maximized: true,
-          waitingCallInfo: true,
-        } : {
-          ...app.initialAppState,
-          waitingCallInfo: true,
-        }
+      app.helpers.setAppState(
+        window.innerWidth <= 480
+          ? {
+              ...app.initialAppState,
+              maximized: true,
+              waitingCallInfo: true,
+            }
+          : {
+              ...app.initialAppState,
+              waitingCallInfo: true,
+            }
       );
     });
-  
+
   // click listener on call waiting info close button
   document
     .getElementById('waiting_call_info_close')
@@ -254,15 +281,15 @@ app.helpers.activateClickListeners = function () {
         ...app.initialAppState,
       });
     });
-  
-    // click listener on call end close button
+
+  // click listener on call end close button
   document
-  .getElementById('end_call_close')
-  .addEventListener('click', function () {
-    app.helpers.setAppState({
-      ...app.initialAppState,
+    .getElementById('end_call_close')
+    .addEventListener('click', function () {
+      app.helpers.setAppState({
+        ...app.initialAppState,
+      });
     });
-  });
 
   // click listener on maximize button
   document
@@ -280,7 +307,11 @@ app.helpers.activateClickListeners = function () {
 
   // click listener on shrink button
   document.getElementById('shrink_btn').addEventListener('click', function () {
-    app.helpers.setAppState(window.innerWidth <= 480 ?  { shrunk: true } : { shrunk: true, maximized: false });
+    app.helpers.setAppState(
+      window.innerWidth <= 480
+        ? { shrunk: true }
+        : { shrunk: true, maximized: false }
+    );
   });
 
   // click listener on expand button
@@ -303,15 +334,17 @@ app.helpers.activateListeners = async function () {
     if (app.currentSession.state !== QB.webrtc.SessionConnectionState.CLOSED) {
       document.getElementById(sounds.ringtone).play();
 
-      app.helpers.setAppState(window.innerWidth <= 480 ?
-        {
-          ...app.initialAppState,
-          maximized: true,
-          callIncoming: true,
-        } : {
-          ...app.initialAppState,
-          callIncoming: true,
-        }
+      app.helpers.setAppState(
+        window.innerWidth <= 480
+          ? {
+              ...app.initialAppState,
+              maximized: true,
+              callIncoming: true,
+            }
+          : {
+              ...app.initialAppState,
+              callIncoming: true,
+            }
       );
     }
   };
@@ -333,15 +366,17 @@ app.helpers.activateListeners = async function () {
             } else {
               app.currentSession.attachMediaStream('local_video', stream);
               app.currentSession.accept(app.extension);
-              app.helpers.setAppState(window.innerWidth <= 480 ?
-                {
-                  ...app.initialAppState,
-                  maximized: true,
-                  callOngoing: true
-                } : {
-                  ...app.initialAppState,
-                  callOngoing: true,
-                }
+              app.helpers.setAppState(
+                window.innerWidth <= 480
+                  ? {
+                      ...app.initialAppState,
+                      maximized: true,
+                      callOngoing: true,
+                    }
+                  : {
+                      ...app.initialAppState,
+                      callOngoing: true,
+                    }
               );
               resolve(stream);
             }
@@ -446,15 +481,17 @@ app.helpers.activateListeners = async function () {
     app.currentSession.detachMediaStream('remote_video');
     app.currentSession.detachMediaStream('local_video');
 
-    app.helpers.setAppState(window.innerWidth <= 480 ?
-      {
-        ...app.initialAppState,
-        maximized: true,
-        endCall: true,
-      } : {
-        ...app.initialAppState,
-        endCall: true,
-      }
+    app.helpers.setAppState(
+      window.innerWidth <= 480
+        ? {
+            ...app.initialAppState,
+            maximized: true,
+            endCall: true,
+          }
+        : {
+            ...app.initialAppState,
+            endCall: true,
+          }
     );
     await restartSession(session.acceptCallTime === 0);
   };
@@ -490,9 +527,9 @@ app.helpers.activateListeners = async function () {
       console.log('Сonnection state:', connectionState);
       console.groupEnd();
     };
-  
-  // when browser tab is closed or reloaded 
-  window.onunload = function() {
+
+  // when browser tab is closed or reloaded
+  window.onunload = function () {
     app.helpers.destroySession(true);
   };
 };

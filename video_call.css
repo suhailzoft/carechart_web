@@ -5,8 +5,8 @@
   --red: #d22c43;
   --green: #408140;
 
-  --raleway: "Raleway", sans-serif;
-  --cabin: "Cabin", sans-serif;
+  --raleway: 'Raleway', sans-serif;
+  --cabin: 'Cabin', sans-serif;
 }
 
 #drag_div {
@@ -28,6 +28,7 @@
 .non_draggable_modal {
   box-shadow: 0;
   width: 100vw;
+  height: -moz-fit-content;
   height: fit-content;
   top: 0;
   left: 0;
@@ -37,6 +38,7 @@
 .draggable_modal {
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 350px;
+  height: -moz-fit-content;
   height: fit-content;
   bottom: 0;
   right: 50;
