@@ -1,0 +1,10 @@
+{
+  "app_name": "Care Chart",
+  "text_welcome": "Bienvenue",
+  "text_preferences_change_password_include": "Your password must include:",
+  "text_preferences_change_password_minimum_char": "minimum 8 characters",
+  "text_preferences_change_password_upper_case": "a uppercase letter",
+  "text_preferences_change_password_lower_case": "a lowercase letter",
+  "text_preferences_change_password_at_least_number": "at least one number",
+  "text_preferences_change_password_special_char": "at least one special character like !@#$"
+}

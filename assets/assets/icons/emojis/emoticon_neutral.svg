@@ -1,0 +1,26 @@
+<svg id="emoticon-neutral" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85" height="85" viewBox="0 0 85 85">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fdd835" stop-opacity="0"/>
+      <stop offset="0.23" stop-color="#fdd835" stop-opacity="0.012"/>
+      <stop offset="0.37" stop-color="#fdd835" stop-opacity="0.039"/>
+      <stop offset="0.48" stop-color="#fdd835" stop-opacity="0.102"/>
+      <stop offset="0.58" stop-color="#fdd835" stop-opacity="0.18"/>
+      <stop offset="0.67" stop-color="#fdd835" stop-opacity="0.278"/>
+      <stop offset="0.75" stop-color="#fdd835" stop-opacity="0.412"/>
+      <stop offset="0.83" stop-color="#fdd835" stop-opacity="0.561"/>
+      <stop offset="0.98" stop-color="#ffb664"/>
+      <stop offset="1" stop-color="#ffb664"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="OBJECTS">
+      <circle id="Ellipse_389" data-name="Ellipse 389" cx="42.5" cy="42.5" r="42.5" fill="#fdd835"/>
+      <circle id="Ellipse_390" data-name="Ellipse 390" cx="42.5" cy="42.5" r="42.5" fill="url(#radial-gradient)"/>
+      <circle id="Ellipse_391" data-name="Ellipse 391" cx="7.36" cy="7.36" r="7.36" transform="translate(17.462 33.541)" fill="#212121"/>
+      <circle id="Ellipse_392" data-name="Ellipse 392" cx="7.36" cy="7.36" r="7.36" transform="translate(52.818 33.541)" fill="#212121"/>
+      <circle id="Ellipse_393" data-name="Ellipse 393" cx="1.805" cy="1.805" r="1.805" transform="translate(24.791 35.601)" fill="#feeb98"/>
+      <circle id="Ellipse_394" data-name="Ellipse 394" cx="1.805" cy="1.805" r="1.805" transform="translate(60.184 35.601)" fill="#feeb98"/>
+    </g>
+  </g>
+</svg>

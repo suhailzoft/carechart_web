@@ -1,0 +1,263 @@
+:root {
+  --primary: #215182;
+  --secondary: #2d3f61;
+  --white: #ffffff;
+  --red: #d22c43;
+  --green: #408140;
+
+  --raleway: 'Raleway', sans-serif;
+  --cabin: 'Cabin', sans-serif;
+}
+
+#drag_div {
+  visibility: hidden;
+  opacity: 1 !important;
+}
+
+.qb_modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: var(--white);
+  border-radius: 10px;
+}
+
+.non_draggable_modal {
+  box-shadow: 0;
+  width: 100vw;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+.draggable_modal {
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 350px;
+  height: -moz-fit-content;
+  height: fit-content;
+  bottom: 0;
+  right: 50;
+  border-radius: 10px;
+}
+
+.qb_modal_header {
+  height: 40px;
+  width: 100%;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+}
+
+.qb_modal_body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 10px 10px;
+}
+
+.draggable_modal .qb_modal_body {
+  height: calc(500px - 40px);
+}
+
+.non_draggable_modal .qb_modal_body {
+  height: calc(100vh - 40px);
+}
+
+.qb_app_container {
+  display: none;
+  padding: 20px;
+  width: 100%;
+}
+
+.video_qb_app_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.qb_app_container img {
+  width: 150px;
+  padding: 40px 0;
+}
+
+.qb_app_container .static_image {
+  width: 100px;
+  padding: 40px 0;
+}
+
+.modal_heading {
+  font-family: var(--cabin);
+  font-weight: 700;
+  color: var(--secondary);
+  font-size: 22px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.modal_text {
+  font-family: var(--raleway);
+  font-weight: 500;
+  color: var(--secondary);
+  font-size: 18px;
+  padding: 0 60px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.modal_header_text {
+  font-family: var(--cabin);
+  font-weight: 600;
+  color: var(--white);
+  font-size: 20px;
+  margin: 0;
+  padding: 8px 0 0 15px;
+}
+
+.header_actions_container {
+  display: flex;
+  margin-right: 5px;
+}
+
+.header_btn {
+  background-color: transparent;
+  margin: 0 5px 0 0;
+  border: 0;
+  cursor: pointer;
+  display: none;
+}
+
+.caller_action_btn {
+  border-radius: 50%;
+  border: 0;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  margin: 0 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.text_btn {
+  color: var(--white);
+  font-family: var(--raleway);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 30px;
+  border: 0;
+  width: 100px;
+  padding: 10px;
+  margin: 0 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.red_button {
+  background-color: var(--red);
+}
+
+.green_button {
+  background-color: var(--green);
+}
+
+.primary_button {
+  background-color: var(--primary);
+}
+
+.qb_video_remote_container {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-color: whitesmoke;
+  border-radius: 0 0 10px 10px;
+}
+
+.qb_video_remote {
+  display: block;
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+
+.qb_video_local_container {
+  position: absolute;
+  top: 10;
+  left: 10;
+  height: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: whitesmoke;
+}
+
+.qb_video_local {
+  display: block;
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+
+.caller_actions_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.caller_actions_buttons {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions_short {
+  width: 65% !important;
+}
+
+.video_caller_actions_container {
+  position: absolute;
+  width: 100%;
+  bottom: 20;
+  display: flex;
+  justify-content: center;
+}
+
+.video_caller_actions_buttons {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button_with_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button_text {
+  font-family: var(--cabin);
+  font-weight: 700;
+  color: var(--secondary);
+  font-size: 16px;
+  padding: 0;
+  margin: 10px 0 5px 0;
+}

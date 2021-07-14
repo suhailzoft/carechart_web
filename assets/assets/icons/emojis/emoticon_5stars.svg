@@ -1,0 +1,45 @@
+<svg id="emoticon-5stars" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102.779" height="85.439" viewBox="0 0 102.779 85.439">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fdd835" stop-opacity="0"/>
+      <stop offset="0.23" stop-color="#fdd835" stop-opacity="0.012"/>
+      <stop offset="0.37" stop-color="#fdd835" stop-opacity="0.039"/>
+      <stop offset="0.48" stop-color="#fdd835" stop-opacity="0.102"/>
+      <stop offset="0.58" stop-color="#fdd835" stop-opacity="0.18"/>
+      <stop offset="0.67" stop-color="#fdd835" stop-opacity="0.278"/>
+      <stop offset="0.75" stop-color="#fdd835" stop-opacity="0.412"/>
+      <stop offset="0.83" stop-color="#fdd835" stop-opacity="0.561"/>
+      <stop offset="0.98" stop-color="#ffb664"/>
+      <stop offset="1" stop-color="#ffb664"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="0.5" cy="0.5" r="0.631" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fd6e35"/>
+      <stop offset="0.09" stop-color="#fd7235" stop-opacity="0.969"/>
+      <stop offset="0.22" stop-color="#fd7b35" stop-opacity="0.878"/>
+      <stop offset="0.39" stop-color="#fd8b35" stop-opacity="0.729"/>
+      <stop offset="0.59" stop-color="#fda135" stop-opacity="0.522"/>
+      <stop offset="0.8" stop-color="#fdbc35" stop-opacity="0.259"/>
+      <stop offset="1" stop-color="#fdd835" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="favorite-24px" transform="translate(67.779)">
+    <path id="Path_3550" data-name="Path 3550" d="M0,0H35V35H0Z" fill="none"/>
+    <path id="Path_3551" data-name="Path 3551" d="M16.583,29.76l-2.115-1.925C6.958,21.025,2,16.533,2,11.021A7.943,7.943,0,0,1,10.021,3a8.733,8.733,0,0,1,6.563,3.048A8.733,8.733,0,0,1,23.146,3a7.943,7.943,0,0,1,8.021,8.021c0,5.512-4.958,10-12.469,16.829Z" transform="translate(0.917 1.375)" fill="#e7691d"/>
+  </g>
+  <g id="emoticon-5" transform="translate(0 0.439)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(0 0)">
+      <g id="OBJECTS">
+        <circle id="Ellipse_385" data-name="Ellipse 385" cx="42.5" cy="42.5" r="42.5" fill="#fdd835"/>
+        <circle id="Ellipse_386" data-name="Ellipse 386" cx="42.5" cy="42.5" r="42.5" fill="url(#radial-gradient)"/>
+        <path id="Path_3903" data-name="Path 3903" d="M30.67,65.71H69s-.434,16.323-19.167,16.323S30.67,65.71,30.67,65.71Z" transform="translate(-7.191 -15.215)" fill="#212121"/>
+        <path id="Path_3904" data-name="Path 3904" d="M43,82.913a22.622,22.622,0,0,0,9.645,1.914,22.622,22.622,0,0,0,9.645-1.914c-.674-2.712-4.734-4.8-9.645-4.8S43.643,80.2,43,82.913Z" transform="translate(-9.969 -18.027)" fill="#e7691d"/>
+        <path id="Path_3905" data-name="Path 3905" d="M24.47,43.9A6.973,6.973,0,0,1,27.1,39.33a8.127,8.127,0,0,1,5.423-1.782,8.909,8.909,0,0,1,5.167,2.007,11.574,11.574,0,0,1,1.766,1.937A10.311,10.311,0,0,1,40.514,43.9a14.464,14.464,0,0,1-2.464-.581c-.775-.139-1.449-.4-2.123-.542a20.375,20.375,0,0,0-3.61-.573,12.713,12.713,0,0,0-3.486.341A38.18,38.18,0,0,0,24.47,43.9Z" transform="translate(-5.665 -8.663)" fill="#212121"/>
+        <path id="Path_3906" data-name="Path 3906" d="M81.7,43.9a38.177,38.177,0,0,0-4.346-1.356,12.736,12.736,0,0,0-3.494-.341,20.406,20.406,0,0,0-3.6.573c-.674.147-1.348.4-2.123.542a14.464,14.464,0,0,1-2.44.589A10.311,10.311,0,0,1,66.751,41.5a11.574,11.574,0,0,1,1.766-1.937,8.894,8.894,0,0,1,5.16-2.014A8.127,8.127,0,0,1,79.1,39.33,6.973,6.973,0,0,1,81.7,43.9Z" transform="translate(-15.208 -8.663)" fill="#212121"/>
+        <path id="Path_3907" data-name="Path 3907" d="M33.19,39.651a3.1,3.1,0,0,1,1.549-.7,4.346,4.346,0,0,1,1.673.077,4.145,4.145,0,0,1,1.511.728,3.1,3.1,0,0,1,1.03,1.364,15.216,15.216,0,0,1-1.549-.263c-.465-.093-.914-.209-1.356-.325s-.883-.232-1.34-.364A14.432,14.432,0,0,1,33.19,39.651Z" transform="translate(-7.658 -8.966)" fill="#7e7e7e"/>
+        <path id="Path_3908" data-name="Path 3908" d="M75.46,39.66a3.014,3.014,0,0,1,1.549-.7,4.06,4.06,0,0,1,1.673.077,4.269,4.269,0,0,1,1.511.728,3.021,3.021,0,0,1,1.023,1.364,13.944,13.944,0,0,1-1.549-.271c-.473-.1-.914-.2-1.356-.318l-1.348-.364A15.752,15.752,0,0,1,75.46,39.66Z" transform="translate(-17.41 -8.966)" fill="#7e7e7e"/>
+        <circle id="Ellipse_387" data-name="Ellipse 387" cx="7.554" cy="7.554" r="7.554" transform="translate(66.283 40.027)" fill="url(#radial-gradient-2)"/>
+        <circle id="Ellipse_388" data-name="Ellipse 388" cx="7.554" cy="7.554" r="7.554" transform="translate(6.322 40.027)" fill="url(#radial-gradient-2)"/>
+      </g>
+    </g>
+  </g>
+</svg>

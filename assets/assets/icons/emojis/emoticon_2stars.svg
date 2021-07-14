@@ -1,0 +1,27 @@
+<svg id="emoticon-2stars" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85" height="85" viewBox="0 0 85 85">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fdd835" stop-opacity="0"/>
+      <stop offset="0.23" stop-color="#fdd835" stop-opacity="0.012"/>
+      <stop offset="0.37" stop-color="#fdd835" stop-opacity="0.039"/>
+      <stop offset="0.48" stop-color="#fdd835" stop-opacity="0.102"/>
+      <stop offset="0.58" stop-color="#fdd835" stop-opacity="0.18"/>
+      <stop offset="0.67" stop-color="#fdd835" stop-opacity="0.278"/>
+      <stop offset="0.75" stop-color="#fdd835" stop-opacity="0.412"/>
+      <stop offset="0.83" stop-color="#fdd835" stop-opacity="0.561"/>
+      <stop offset="0.98" stop-color="#ffb664"/>
+      <stop offset="1" stop-color="#ffb664"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="OBJECTS">
+      <circle id="Ellipse_377" data-name="Ellipse 377" cx="42.5" cy="42.5" r="42.5" fill="#fdd835"/>
+      <circle id="Ellipse_378" data-name="Ellipse 378" cx="42.5" cy="42.5" r="42.5" fill="url(#radial-gradient)"/>
+      <circle id="Ellipse_379" data-name="Ellipse 379" cx="7.36" cy="7.36" r="7.36" transform="translate(17.462 33.541)" fill="#212121"/>
+      <circle id="Ellipse_380" data-name="Ellipse 380" cx="7.36" cy="7.36" r="7.36" transform="translate(52.818 33.541)" fill="#212121"/>
+      <line id="Line_77" data-name="Line 77" x2="20.917" transform="translate(32.041 54.237)" fill="none" stroke="#212121" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path_3898" data-name="Path 3898" d="M35.946,48.075a1.805,1.805,0,1,1-.531-1.279A1.813,1.813,0,0,1,35.946,48.075Z" transform="translate(-7.452 -10.669)" fill="#feeb98"/>
+      <path id="Path_3899" data-name="Path 3899" d="M81.946,48.075a1.805,1.805,0,1,1-.531-1.279,1.813,1.813,0,0,1,.531,1.279Z" transform="translate(-18.059 -10.669)" fill="#feeb98"/>
+    </g>
+  </g>
+</svg>

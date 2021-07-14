@@ -1,0 +1,288 @@
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Care Chart</title>
+  <script defer src="index.dart.js" type="application/javascript"></script>
+
+  <style>
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid blue;
+      border-right: 16px solid green;
+      border-bottom: 16px solid red;
+      border-left: 16px solid pink;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- QB JS APP STYLES -->
+  <link rel="stylesheet" href="video_call.css" />
+</head>
+
+<body>
+<!-- SCRIPTS -->
+
+<!-- DEPENDENCIES -->
+<script src="assets/packages/libphonenumber_plugin/js/libphonenumber.js"></script>
+<script src="assets/packages/libphonenumber_plugin/js/stringbuffer.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyB6gYcn5AM9Dyu7bBqeQYAo-UMvEhDOn8Y",
+    authDomain: "carechart-dev.firebaseapp.com",
+    projectId: "carechart-dev",
+    storageBucket: "carechart-dev.appspot.com",
+    messagingSenderId: "299875621856",
+    appId: "1:299875621856:web:be6c405b0c78bb1d87a985",
+    measurementId: "G-VHNNSG1KBW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+ 
+
+<div class="loading">
+  <img src="loader.gif">
+</div>
+
+<script src="main.dart.js" type="application/javascript"></script>
+
+<!-- QB JS SDK-->
+<script src="https://unpkg.com/quickblox@2.13.0/quickblox.min.js"></script>
+<!-- QB JS HELPERS -->
+<script src="js/quickblox_helpers.js"></script>
+<!-- QB JS APP -->
+<script src="js/quickblox_app.js"></script>
+
+<!-- SOUNDS -->
+<audio id="endCallSignal" preload="auto">
+  <source src="audio/end_of_call.ogg" type="audio/ogg" />
+  <source src="audio/end_of_call.mp3" type="audio/mp3" />
+</audio>
+
+<audio id="callingSignal" loop preload="auto">
+  <source src="audio/calling.ogg" type="audio/ogg" />
+  <source src="audio/calling.mp3" type="audio/mp3" />
+</audio>
+
+<audio id="ringtoneSignal" loop preload="auto">
+  <source src="audio/ringtone.ogg" type="audio/ogg" />
+  <source src="audio/ringtone.mp3" type="audio/mp3" />
+</audio>
+
+<!-- Draggable DIV -->
+<div id="drag_div" class="qb_modal">
+
+  <!-- header -->
+  <div class="qb_modal_header">
+    <p class="modal_header_text">
+      <span>Call Nurse</span>
+    </p>
+    <div class="header_actions_container">
+      <button id="video_maximize" class="video_maximize header_btn">
+        <svg width="15" height="15" x="0" y="0" viewBox="0 0 512 512">
+          <path d="m104 72h48a24 24 0 0 0 24-24 24 24 0 0 0 -24-24h-104a24 24 0 0 0 -24 24v104a24 24 0 0 0 48 0v-48l116 116a22.627 22.627 0 0 0 32 0 22.627 22.627 0 0 0 0-32z" fill="#ffffff" data-original="#000000" style="" class=""/><path d="m220 292a22.627 22.627 0 0 0 -32 0l-116 116v-48a24 24 0 0 0 -48 0v104a24 24 0 0 0 24 24h104a24 24 0 0 0 24-24 24 24 0 0 0 -24-24h-48l116-116a22.627 22.627 0 0 0 0-32z" fill="#ffffff" data-original="#000000" style="" class=""/><path d="m464 24h-104a24 24 0 0 0 -24 24 24 24 0 0 0 24 24h48l-116 116a22.627 22.627 0 0 0 0 32 22.627 22.627 0 0 0 32 0l116-116v48a24 24 0 0 0 48 0v-104a24 24 0 0 0 -24-24z" fill="#ffffff" data-original="#000000" style="" class=""/><path d="m464 336a24 24 0 0 0 -24 24v48l-116-116a22.627 22.627 0 0 0 -32 0 22.627 22.627 0 0 0 0 32l116 116h-48a24 24 0 0 0 -24 24 24 24 0 0 0 24 24h104a24 24 0 0 0 24-24v-104a24 24 0 0 0 -24-24z" fill="#ffffff" data-original="#000000" style="" class=""/>
+        </svg>
+      </button>
+      <button id="video_minimize" class="video_minimize header_btn">
+        <svg width="15" height="15" x="0" y="0" viewBox="0 0 28.359 28.359">
+          <path d="M21.935,19.368h3.235c0.878-0.003,1.589-0.67,1.589-1.492c0-0.824-0.711-1.492-1.589-1.492h-6.764    c-0.879,0-1.59,0.668-1.591,1.492c0.001,0.019,0.007,0.041,0.007,0.061c0,0.027-0.007,0.057-0.007,0.086v6.673    c0,0.864,0.666,1.566,1.49,1.566c0.822-0.002,1.492-0.702,1.492-1.566v-3.252l6.018,6.02c0.582,0.583,1.525,0.583,2.108,0    c0.58-0.582,0.58-1.526,0-2.108L21.935,19.368z" fill="#ffffff" />
+          <path d="M11.543,17.876c-0.002-0.824-0.712-1.492-1.592-1.492H3.189c-0.877,0-1.593,0.668-1.593,1.492    c0,0.822,0.716,1.489,1.593,1.492h3.235l-5.991,5.986c-0.577,0.582-0.577,1.526,0,2.108c0.584,0.583,1.527,0.583,2.108,0    l6.019-6.02v3.252c0,0.864,0.67,1.564,1.491,1.566c0.826,0,1.491-0.702,1.491-1.566v-6.673c0-0.029-0.008-0.059-0.008-0.086    C11.535,17.917,11.541,17.895,11.543,17.876z" fill="#ffffff" />
+          <path d="M16.815,10.479c0.001,0.824,0.712,1.491,1.591,1.491h6.764c0.878,0,1.589-0.667,1.589-1.491    c0-0.822-0.711-1.487-1.589-1.489h-3.235l5.989-5.987c0.58-0.584,0.58-1.528,0-2.109c-0.583-0.582-1.526-0.582-2.108,0    l-6.018,6.02V3.662c0-0.867-0.67-1.568-1.492-1.568c-0.824,0-1.49,0.701-1.49,1.568v6.671c0,0.03,0.007,0.057,0.007,0.087    C16.822,10.44,16.816,10.456,16.815,10.479z" fill="#ffffff" />
+          <path d="M10.052,2.094c-0.821,0-1.491,0.701-1.491,1.568v3.251l-6.019-6.02c-0.581-0.582-1.524-0.582-2.108,0    c-0.577,0.581-0.577,1.525,0,2.109l5.991,5.987H3.189c-0.876,0.003-1.592,0.668-1.592,1.49c0,0.824,0.716,1.491,1.593,1.491h6.761    c0.88,0,1.59-0.667,1.592-1.491c-0.002-0.023-0.008-0.039-0.008-0.06c0-0.03,0.008-0.057,0.008-0.087v-6.67    C11.543,2.795,10.878,2.094,10.052,2.094z" fill="#ffffff" />
+        </svg> 
+      </button>
+      <button id="shrink_btn" class="shrink_btn header_btn">
+        <svg width="15" height="15" x="0" y="0" viewBox="0 0 512 512">
+          <path d="M416.667,0H95.333C42.766,0,0,42.767,0,95.334v321.333C0,469.233,42.766,512,95.333,512h321.334    C469.234,512,512,469.233,512,416.667V95.334C512,42.767,469.234,0,416.667,0z M482,416.667C482,452.691,452.692,482,416.667,482    H95.333C59.308,482,30,452.691,30,416.667V95.334C30,59.309,59.308,30,95.333,30h321.334C452.692,30,482,59.309,482,95.334    V416.667z" fill="#ffffff"/>
+          <path d="M400.601,241H111.399c-8.284,0-15,6.716-15,15s6.716,15,15,15H400.6c8.284,0,15-6.716,15-15    C415.601,247.716,408.885,241,400.601,241z" fill="#ffffff"/>
+        </svg>
+      </button>
+      <button id="expand_btn" class="expand_btn header_btn">
+        <svg width="15" height="15" x="0" y="0" viewBox="0 0 64 64" >
+          <path d="m61 31v24a6 6 0 0 1 -6 6h-46a6 6 0 0 1 -6-6v-46a6 6 0 0 1 6-6h24a3 3 0 0 1 0 6h-22a2.006 2.006 0 0 0 -2 2v42a2.006 2.006 0 0 0 2 2h42a2.006 2.006 0 0 0 2-2v-22a3 3 0 0 1 6 0z" fill="#ffffff" data-original="#000000" style="" class=""/><path d="m61 5v14a3 3 0 0 1 -6 0v-5.76l-18.04 18.04a3 3 0 0 1 -4.24-4.24l18.04-18.04h-5.76a3 3 0 0 1 0-6h14a2.006 2.006 0 0 1 2 2z" fill="#ffffff" />
+          </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="modal_body" class="qb_modal_body">
+    <!-- Waiting for Call Alert -->
+    <div class="qb_app_container body_container waiting_call">
+      <p class="modal_heading">Call Nurse</p>
+      <p class="modal_text">Please hold while we connect you</p>
+      <img src="images/call_waiting_room.gif" />
+      <div class="caller_actions_container">
+        <div class="caller_actions_buttons">
+          <button id="waiting_call_close" class="caller_action_btn red_button">
+            <svg width="20" height="20" x="0" y="0" viewBox="0 0 241.171 241.171" preserveAspectRatio="xMidYMid meet">
+              <path d="M138.138,120.754l99.118-98.576c4.752-4.704,4.752-12.319,0-17.011c-4.74-4.704-12.439-4.704-17.179,0   l-99.033,98.492L21.095,3.699c-4.74-4.752-12.439-4.752-17.179,0c-4.74,4.764-4.74,12.475,0,17.227l99.876,99.888L3.555,220.497   c-4.74,4.704-4.74,12.319,0,17.011c4.74,4.704,12.439,4.704,17.179,0l100.152-99.599l99.551,99.563   c4.74,4.752,12.439,4.752,17.179,0c4.74-4.764,4.74-12.475,0-17.227L138.138,120.754z" fill="#ffffff" data-original="#000000" style="" class=""/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Incoming Call Alert -->
+    <div class="qb_app_container body_container incoming_call">
+      <p class="modal_heading">Call Nurse</p>
+      <p class="modal_text">You have a call from the nurse</p>
+      <img src="images/call_waiting.gif" />
+      <div class="caller_actions_container">
+        <div class="caller_actions_buttons actions_short">
+          <div class="button_with_text">
+            <button id="incoming_call_accept" class="caller_action_btn primary_button">
+              <svg width="20" height="20" x="0" y="0" viewBox="0 0 513.64 513.64">
+                <path d="M499.66,376.96l-71.68-71.68c-25.6-25.6-69.12-15.359-79.36,17.92c-7.68,23.041-33.28,35.841-56.32,30.72    c-51.2-12.8-120.32-79.36-133.12-133.12c-7.68-23.041,7.68-48.641,30.72-56.32c33.28-10.24,43.52-53.76,17.92-79.36l-71.68-71.68    c-20.48-17.92-51.2-17.92-69.12,0l-48.64,48.64c-48.64,51.2,5.12,186.88,125.44,307.2c120.32,120.32,256,176.641,307.2,125.44    l48.64-48.64C517.581,425.6,517.581,394.88,499.66,376.96z" fill="#ffffff"/>
+              </svg>        
+            </button>
+            <p class="button_text">Accept</p>
+          </div>
+          <div class="button_with_text">
+            <button id="incoming_call_reject" class="caller_action_btn red_button">
+              <svg width="20" height="20" x="0" y="0" viewBox="0 0 241.171 241.171" preserveAspectRatio="xMidYMid meet">
+                <path d="M138.138,120.754l99.118-98.576c4.752-4.704,4.752-12.319,0-17.011c-4.74-4.704-12.439-4.704-17.179,0   l-99.033,98.492L21.095,3.699c-4.74-4.752-12.439-4.752-17.179,0c-4.74,4.764-4.74,12.475,0,17.227l99.876,99.888L3.555,220.497   c-4.74,4.704-4.74,12.319,0,17.011c4.74,4.704,12.439,4.704,17.179,0l100.152-99.599l99.551,99.563   c4.74,4.752,12.439,4.752,17.179,0c4.74-4.764,4.74-12.475,0-17.227L138.138,120.754z" fill="#ffffff" data-original="#000000" style="" class=""/>
+              </svg>
+            </button>
+            <p class="button_text">Decline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Call -->
+    <div class="video_qb_app_container video_call">
+      <div class="qb_video_remote_container">
+        <video
+          id="remote_video"
+          class="qb_video_remote"
+          autoplay
+        ></video>
+      </div>
+      <div class="qb_video_local_container">
+        <video
+          id="local_video"
+          class="qb_video_local"
+          autoplay
+        ></video>
+      </div>
+      <div class="video_caller_actions_container">
+        <div class="video_caller_actions_buttons">
+          <button id="video_call_mute_audio" class="video_call_mute_audio caller_action_btn primary_button">
+            <svg width="20" height="20" x="0" y="0" viewBox="0 0 475.085 475.085">
+              <path d="M237.541,328.897c25.128,0,46.632-8.946,64.523-26.83c17.888-17.884,26.833-39.399,26.833-64.525V91.365    c0-25.126-8.938-46.632-26.833-64.525C284.173,8.951,262.669,0,237.541,0c-25.125,0-46.632,8.951-64.524,26.84    c-17.893,17.89-26.838,39.399-26.838,64.525v146.177c0,25.125,8.949,46.641,26.838,64.525    C190.906,319.951,212.416,328.897,237.541,328.897z" fill="#ffffff" />
+              <path d="M396.563,188.15c-3.606-3.617-7.898-5.426-12.847-5.426c-4.944,0-9.226,1.809-12.847,5.426    c-3.613,3.616-5.421,7.898-5.421,12.845v36.547c0,35.214-12.518,65.333-37.548,90.362c-25.022,25.03-55.145,37.545-90.36,37.545    c-35.214,0-65.334-12.515-90.365-37.545c-25.028-25.022-37.541-55.147-37.541-90.362v-36.547c0-4.947-1.809-9.229-5.424-12.845    c-3.617-3.617-7.895-5.426-12.847-5.426c-4.952,0-9.235,1.809-12.85,5.426c-3.618,3.616-5.426,7.898-5.426,12.845v36.547    c0,42.065,14.04,78.659,42.112,109.776c28.073,31.118,62.762,48.961,104.068,53.526v37.691h-73.089    c-4.949,0-9.231,1.811-12.847,5.428c-3.617,3.614-5.426,7.898-5.426,12.847c0,4.941,1.809,9.233,5.426,12.847    c3.616,3.614,7.898,5.428,12.847,5.428h182.719c4.948,0,9.236-1.813,12.847-5.428c3.621-3.613,5.431-7.905,5.431-12.847    c0-4.948-1.81-9.232-5.431-12.847c-3.61-3.617-7.898-5.428-12.847-5.428h-73.08v-37.691    c41.299-4.565,75.985-22.408,104.061-53.526c28.076-31.117,42.12-67.711,42.12-109.776v-36.547    C401.998,196.049,400.185,191.77,396.563,188.15z" fill="#ffffff" />
+          </svg>
+          </button>
+          <button id="video_call_unmute_audio" class="video_call_unmute_audio caller_action_btn red_button">
+            <svg width="20" height="20" x="0" y="0" viewBox="0 0 475.085 475.085">
+              <path d="M237.541,328.897c25.128,0,46.632-8.946,64.523-26.83c17.888-17.884,26.833-39.399,26.833-64.525V91.365    c0-25.126-8.938-46.632-26.833-64.525C284.173,8.951,262.669,0,237.541,0c-25.125,0-46.632,8.951-64.524,26.84    c-17.893,17.89-26.838,39.399-26.838,64.525v146.177c0,25.125,8.949,46.641,26.838,64.525    C190.906,319.951,212.416,328.897,237.541,328.897z" fill="#ffffff" />
+              <path d="M396.563,188.15c-3.606-3.617-7.898-5.426-12.847-5.426c-4.944,0-9.226,1.809-12.847,5.426    c-3.613,3.616-5.421,7.898-5.421,12.845v36.547c0,35.214-12.518,65.333-37.548,90.362c-25.022,25.03-55.145,37.545-90.36,37.545    c-35.214,0-65.334-12.515-90.365-37.545c-25.028-25.022-37.541-55.147-37.541-90.362v-36.547c0-4.947-1.809-9.229-5.424-12.845    c-3.617-3.617-7.895-5.426-12.847-5.426c-4.952,0-9.235,1.809-12.85,5.426c-3.618,3.616-5.426,7.898-5.426,12.845v36.547    c0,42.065,14.04,78.659,42.112,109.776c28.073,31.118,62.762,48.961,104.068,53.526v37.691h-73.089    c-4.949,0-9.231,1.811-12.847,5.428c-3.617,3.614-5.426,7.898-5.426,12.847c0,4.941,1.809,9.233,5.426,12.847    c3.616,3.614,7.898,5.428,12.847,5.428h182.719c4.948,0,9.236-1.813,12.847-5.428c3.621-3.613,5.431-7.905,5.431-12.847    c0-4.948-1.81-9.232-5.431-12.847c-3.61-3.617-7.898-5.428-12.847-5.428h-73.08v-37.691    c41.299-4.565,75.985-22.408,104.061-53.526c28.076-31.117,42.12-67.711,42.12-109.776v-36.547    C401.998,196.049,400.185,191.77,396.563,188.15z" fill="#ffffff" />
+          </svg>
+          </button>
+          <button id="video_call_disconnect" class="caller_action_btn red_button">
+            <svg width="20" height="20" x="0" y="0" viewBox="0 0 241.171 241.171" preserveAspectRatio="xMidYMid meet">
+              <path d="M138.138,120.754l99.118-98.576c4.752-4.704,4.752-12.319,0-17.011c-4.74-4.704-12.439-4.704-17.179,0   l-99.033,98.492L21.095,3.699c-4.74-4.752-12.439-4.752-17.179,0c-4.74,4.764-4.74,12.475,0,17.227l99.876,99.888L3.555,220.497   c-4.74,4.704-4.74,12.319,0,17.011c4.74,4.704,12.439,4.704,17.179,0l100.152-99.599l99.551,99.563   c4.74,4.752,12.439,4.752,17.179,0c4.74-4.764,4.74-12.475,0-17.227L138.138,120.754z" fill="#ffffff" data-original="#000000" style="" class=""/>
+            </svg>
+          </button>
+          <button id="video_call_mute_video" class="video_call_mute_video caller_action_btn primary_button" preserveAspectRatio="xMidYMid meet">
+            <svg width="20" height="20" x="0" y="0" viewBox="0 0 467.968 467.968">
+              <path d="M264.704,96.512H51.2c-28.16,0-51.2,23.04-51.2,51.2v172.544c0,28.16,23.04,51.2,51.2,51.2h213.504    c28.16,0,51.2-23.04,51.2-51.2V147.712C315.904,119.04,292.864,96.512,264.704,96.512z" fill="#ffffff" />
+              <path d="M430.08,124.672c-3.072,0.512-6.144,2.048-8.704,3.584l-79.872,46.08V293.12l80.384,46.08    c14.848,8.704,33.28,3.584,41.984-11.264c2.56-4.608,4.096-9.728,4.096-15.36V154.368    C467.968,135.424,450.048,120.064,430.08,124.672z" fill="#ffffff" />
+            </svg>
+          </button>
+          <button id="video_call_unmute_video" class="video_call_unmute_video caller_action_btn red_button" preserveAspectRatio="xMidYMid meet">
+            <svg width="20" height="20" x="0" y="0" viewBox="0 0 467.968 467.968">
+              <path d="M264.704,96.512H51.2c-28.16,0-51.2,23.04-51.2,51.2v172.544c0,28.16,23.04,51.2,51.2,51.2h213.504    c28.16,0,51.2-23.04,51.2-51.2V147.712C315.904,119.04,292.864,96.512,264.704,96.512z" fill="#ffffff" />
+              <path d="M430.08,124.672c-3.072,0.512-6.144,2.048-8.704,3.584l-79.872,46.08V293.12l80.384,46.08    c14.848,8.704,33.28,3.584,41.984-11.264c2.56-4.608,4.096-9.728,4.096-15.36V154.368    C467.968,135.424,450.048,120.064,430.08,124.672z" fill="#ffffff" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waiting for Call Info -->
+    <div class="qb_app_container body_container waiting_call_info">
+      <p class="modal_heading">Nurse Callback</p>
+      <p class="modal_text">Please expect a call from the nurse in the next 10 to 15 min</p>
+      <img class="static_image" src="images/nurse_assistant.png" /> 
+      <div class="caller_actions_container">
+        <button id="waiting_call_info_close" class="text_btn primary_button">
+          CLOSE
+        </button>
+      </div>
+    </div>
+
+    <!-- Call Ended Alert -->
+    <div class="qb_app_container body_container end_call">
+      <p class="modal_heading">Call Ended</p>
+      <p class="modal_text">Your call with the nurse has been finished.<br />Thank you, have a good day!</p>
+      <img class="static_image" src="images/nurse_assistant.png" />
+      <div class="caller_actions_container">
+        <button id="end_call_close" class="text_btn primary_button">
+          CLOSE
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- DRAG LOGIC -->
+<script src="js/drag.js"></script>
+</body>
+
+</html>
