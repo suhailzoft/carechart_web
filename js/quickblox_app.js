@@ -6,11 +6,6 @@ const sounds = {
   ringtone: 'ringtoneSignal',
 };
 
-const mediaParams = {
-  audio: true,
-  video: true,
-};
-
 /**
  * QB Event listener.
  *
@@ -43,7 +38,7 @@ async function startSession(
   silent = false
 ) {
   if (app.currentSession.ID || app.currentUser.id) {
-    restartSession(true);
+    await restartSession(true);
     return true;
   }
 
@@ -55,12 +50,7 @@ async function startSession(
   };
 
   const config = {
-    debug: { mode: 1 }, //false,
-    webrtc: {
-      answerTimeInterval: 60,
-      dialingTimeInterval: 5,
-      disconnectTimeInterval: 35,
-    },
+    debug: { mode: 1 },
     endpoints: {
       api: apiEndpoint.replace('https://', ''),
       chat: chatEndpoint.replace('https://', ''),
@@ -97,12 +87,13 @@ async function startSession(
 }
 
 async function restartSession(restart = false) {
-  if (app.currentSession.ID) {
-    QB.destroySession(() => null);
+  if (app.currentSession.ID || app.currentUser.id) {
+    await QB.destroySession(() => null);
   }
 
-  QB.chat.disconnect();
+  await QB.chat.disconnect();
   app.currentSession = {};
+  app.extension = {};
 
   const user = app.currentUser;
   const pass = localStorage.getItem('qb_user_pw');
@@ -128,6 +119,6 @@ async function restartSession(restart = false) {
   }
 }
 
-async function destroySession() {
-  await app.helpers.destroySession();
+async function destroySession(restart = false) {
+  await app.helpers.destroySession(restart);
 }

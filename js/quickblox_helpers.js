@@ -54,6 +54,11 @@ app.initialAppState = {
   videoMute: false,
 };
 
+app.mediaParams = {
+  audio: true,
+  video: true,
+};
+
 const classes = {
   waiting_call: 'waiting_call',
   incoming_call: 'incoming_call',
@@ -234,7 +239,7 @@ app.helpers.destroySession = async function (restart = false) {
     ...app.initialAppState,
   });
 
-  await restartSession();
+  await restartSession(restart);
 };
 
 app.helpers.connectToChat = async function (userId, password) {
@@ -329,6 +334,7 @@ app.helpers.activateListeners = async function () {
     console.groupEnd();
 
     app.currentSession = session;
+    app.extension = extension;
 
     // check the current session state
     if (app.currentSession.state !== QB.webrtc.SessionConnectionState.CLOSED) {
@@ -357,15 +363,14 @@ app.helpers.activateListeners = async function () {
 
       await new Promise(function (resolve, reject) {
         app.currentSession.getUserMedia(
-          mediaParams,
+          app.mediaParams,
           async function (error, stream) {
             if (error) {
-              console.log(error);
-              app.currentSession.reject(app.extension);
+              await app.currentSession.reject(app.extension);
               reject(error);
             } else {
-              app.currentSession.attachMediaStream('local_video', stream);
-              app.currentSession.accept(app.extension);
+              await app.currentSession.attachMediaStream('local_video', stream);
+              await app.currentSession.accept(app.extension);
               app.helpers.setAppState(
                 window.innerWidth <= 480
                   ? {
@@ -478,8 +483,8 @@ app.helpers.activateListeners = async function () {
     document.getElementById(sounds.end).play();
     document.getElementById(sounds.ringtone).pause();
 
-    app.currentSession.detachMediaStream('remote_video');
-    app.currentSession.detachMediaStream('local_video');
+    await app.currentSession.detachMediaStream('remote_video');
+    await app.currentSession.detachMediaStream('local_video');
 
     app.helpers.setAppState(
       window.innerWidth <= 480
@@ -493,7 +498,7 @@ app.helpers.activateListeners = async function () {
             endCall: true,
           }
     );
-    await restartSession(session.acceptCallTime === 0);
+    await restartSession(true);
   };
 
   // on chat server disconnection
@@ -529,8 +534,11 @@ app.helpers.activateListeners = async function () {
     };
 
   // when browser tab is closed or reloaded
-  window.onunload = function () {
-    app.helpers.destroySession(true);
+  window.onunload = async function () {
+    if (app.currentSession.ID || app.currentUser.id) {
+      await app.currentSession.stop(app.extension);
+      return true;
+    }
   };
 };
 
