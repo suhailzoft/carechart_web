@@ -50,7 +50,7 @@ async function startSession(
   };
 
   const config = {
-    debug: { mode: 1 },
+    debug: false,
     endpoints: {
       api: apiEndpoint.replace('https://', ''),
       chat: chatEndpoint.replace('https://', ''),
